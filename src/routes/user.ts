@@ -13,6 +13,6 @@ const userController = new UserController(userService)
 const registrationController = new RegistrationController(userService)
 //--------------------------------------------------------------------------------
 router.post('/', registerMiddleware, registrationController.signUp.bind(registrationController))
-router.post('/info',checkTokenMiddleware,userController.get.bind(userController))
+router.post('/info', checkTokenMiddleware, userController.get.bind(userController))
 
 export default router

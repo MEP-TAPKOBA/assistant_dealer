@@ -2,8 +2,8 @@ const jwt = require('jsonwebtoken');
 
 // Мидлвар для проверки JWT
 export function checkTokenMiddleware(req, res, next) {
-  
-  const token = req.cookies?.token 
+
+  const token = req.cookies?.token
 
   if (!token) {
     return res.status(401).json({ message: 'Вам необходимо авторизироваться' });

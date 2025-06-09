@@ -3,16 +3,16 @@ const BAD_CHAR_REGEX = /[\/<>\*\\"';|?%]/;
 
 export class StrValidator {
 
-  constructor(public value:string) {
+  constructor(public value: string) {
   }
-  minMax(min, max): boolean{
+  minMax(min, max): boolean {
     if (this.value.length < min || this.value.length > max) return false
     return true
   }
   isString(min = 1, max = 1000): boolean {
     if (typeof (this.value) !== 'string') return false
     if (BAD_CHAR_REGEX.test(this.value)) return false
-    if (!this.minMax(min,max)) return false
+    if (!this.minMax(min, max)) return false
     return true
   }
   isEmail(): boolean {
@@ -20,7 +20,7 @@ export class StrValidator {
     return true
   }
   isPassword(): boolean {
-    if (!this.isString(8,20)) return false
+    if (!this.isString(8, 20)) return false
     return true
   }
   static make(value) {
