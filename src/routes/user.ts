@@ -1,5 +1,5 @@
-import { checkTokenMiddleware } from '../middlwares/checkTokenMiddleware'
 import { RegistrationController } from '../controllers/RegistrationController'
+import { checkTokenMiddleware } from '../middlwares/checkTokenMiddleware'
 import { registerMiddleware } from '../middlwares/registerMiddleware'
 import { UserController } from '../controllers/UserController'
 import { UserService } from '../services/UserService'

@@ -1,8 +1,6 @@
-
 import { UserDto } from "shared/dto/users/user.dto"
 import { PrismaClient} from "@prisma/client"
 import { hash } from "argon2"
-
 
 export class UserService{
 

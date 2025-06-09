@@ -1,4 +1,3 @@
-
 import { AuthController } from '../controllers/AuthController'
 import { AuthService } from '../services/AuthService'
 import { PrismaClient } from '@prisma/client'

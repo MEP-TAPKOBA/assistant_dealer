@@ -1,6 +1,5 @@
-import {Request, Response} from 'express'
 import { UserService } from "services/UserService";
-import { UserLoginDto } from "shared/dto/users/login-user.dto";
+import {Request, Response} from 'express'
 
 
 export class UserController {
