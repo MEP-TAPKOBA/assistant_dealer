@@ -1,0 +1,18 @@
+.footer{
+    padding: 16px 0;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #54bf72;
+    width: 100%;
+}
+.contacts{
+    color: white;
+    font-weight: 900;
+    font-size: 28px;
+    text-align: center;
+    -webkit-text-stroke: 1px #000;
+}
+
+
+
