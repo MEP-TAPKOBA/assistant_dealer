@@ -1,16 +1,24 @@
 import cookieParser from 'cookie-parser'
 import loginRouter from './routes/login'
 import userRouter from './routes/user'
+import bodyParser from 'body-parser';
 import express from "express"
+import path  from "path";
 
+
+const templatesPath = path.resolve(process.cwd(),'public','views')
 const port = process.env.PORT || 5000;
 const app = express()
 
 async function run() {
+    app.use(express.static('public'))
     app.use(express.json())
+    app.use(bodyParser.urlencoded({extended:true}))
     app.use(cookieParser());
+    app.set('view engine','ejs')
+    app.set('views',templatesPath)
     app.get('/', (req, res) => {
-        res.status(200).json({ message: `Server is working Ситяс` })
+        res.render('index', {username : 'Пидорас'})
     })
     app.use('/registration', userRouter)
     app.use('/login', loginRouter)

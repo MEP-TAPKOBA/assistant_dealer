@@ -13,6 +13,7 @@
   "devDependencies": {
     "@swc/cli": "^0.7.7",
     "@swc/core": "^1.11.29",
+    "@types/ejs": "3.1.5",
     "@types/express": "^5.0.2",
     "@types/node": "20.10.0",
     "nodemon": "^3.1.10",
@@ -22,8 +23,10 @@
     "@faker-js/faker": "^9.8.0",
     "@prisma/client": "^6.8.2",
     "argon2": "^0.43.0",
+    "body-parser": "^2.2.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^16.5.0",
+    "ejs": "^3.1.10",
     "express": "^5.1.0",
     "jsonwebtoken": "^9.0.2"
   }
