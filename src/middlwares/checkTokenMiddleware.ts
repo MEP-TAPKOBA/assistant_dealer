@@ -1,4 +1,4 @@
-const jwt = require('jsonwebtoken');
+import jwt from 'jsonwebtoken'
 
 // Мидлвар для проверки JWT
 export function checkTokenMiddleware(req, res, next) {
