@@ -9,7 +9,8 @@
     <link rel="icon" href="/icons/favicon.ico" />
 </head>
 <body>
-    <%- include('./particals/nav') %>   
+    <%- include('./particals/nav') %>
+    <section>
     <form action="login" method="post">
         <label for="email">Почта:</label>
         <input type="text" id="test1" name="email"><br>
@@ -17,6 +18,7 @@
         <input type="password" id="test2" name="password"><br>
         <button type="submit" class="custom-btn btn"><span>Вход</span></button>
     </form>
+</section>   
     <div class="footer">
         <%- include ('./particals/footer') %>
    </div>
