@@ -20,7 +20,7 @@ async function run() {
     app.get('/', (req, res) => {
         res.render('index', {username : 'Пидорас'})
     })
-    app.use('/registration', userRouter)
+    app.use('/user', userRouter)
     app.use('/login', loginRouter)
     app.listen(port, () => {
         console.log(`Ситяс Сервер запущен на порту ${port}`)

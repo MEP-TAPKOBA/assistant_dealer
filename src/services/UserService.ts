@@ -1,7 +1,7 @@
 import { UserDto } from "shared/dto/users/user.dto"
 import { PrismaClient } from "@prisma/client"
-import jwt from 'jsonwebtoken'
 import { hash, verify } from "argon2"
+import jwt from 'jsonwebtoken'
 
 export class UserService {
 
@@ -16,14 +16,15 @@ export class UserService {
             return [200, 'ok']
         } catch (e) { return [500, 'iternalError'] }
     }
-    async switchPassword(req, oldPassword, newPassword){
-        
+    async switchPassword(req):Promise <[number,string]>{
+        const {oldPassword, newPassword} = req.body
         const token = req.cookies?.token
         const decoded = jwt.verify(token, process.env.SECRET_KEY, { algorithms: ['HS256'] }) as any
         const findUser = await this.prisma.user.findUnique({where: {email:decoded.email}})
         if(!await verify(findUser.password,oldPassword))
             return [401,'Пароль не подошел']
-        await this.prisma.user.update({ where: { email: decoded.email },data: { password:newPassword } })
+        await this.prisma.user.update({ where: { email: decoded.email },data: { password:await hash(newPassword) } })
+        return [200, `success \n newPassword:${newPassword}`]
     }
     async getInfo(dto): Promise<[number, object]> {
         const user = await this.prisma.user.findUnique({ where: { email: dto.user.email } })
