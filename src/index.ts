@@ -1,5 +1,6 @@
 import cookieParser from 'cookie-parser'
 import loginRouter from './routes/login'
+import registrationRouter from './routes/registration'
 import userRouter from './routes/user'
 import bodyParser from 'body-parser';
 import express from "express"
@@ -20,6 +21,7 @@ async function run() {
     app.get('/', (req, res) => {
         res.render('index', {username : 'Пидорас'})
     })
+    app.use('/registration',registrationRouter)
     app.use('/user', userRouter)
     app.use('/login', loginRouter)
     app.listen(port, () => {

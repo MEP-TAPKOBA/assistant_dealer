@@ -18,5 +18,78 @@ model User {
   createdAt   DateTime @default(now()) @map("created_at")
   updatedAt   DateTime @updatedAt @map("updated_at")
 
+  // Связи
+  suppliers Supplier[]
+  stores    Store[]
+  products  Product[]
+
   @@map("users")
+}
+
+model Supplier {
+  id          Int    @id @default(autoincrement())
+  userId      Int    @map("user_id")
+  name        String @map("supplier_name")
+  description String @map("supplier_info")
+  category    String @map("product_category")
+  createdAt   DateTime @default(now()) @map("created_at")
+  updatedAt   DateTime @updatedAt @map("updated_at")
+
+  // Связи
+  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  products Product[]
+  stores   StoreSupplier[]
+
+  @@map("suppliers")
+}
+
+model Store {
+  id        Int    @id @default(autoincrement())
+  userId    Int    @map("user_id")
+  name      String @map("store_name")
+  address   String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  // Связи
+  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  products  Product[]
+  suppliers StoreSupplier[]
+
+  @@map("stores")
+}
+
+model Product {
+  id             Int     @id @default(autoincrement())
+  userId         Int     @map("user_id")
+  supplierId     Int     @map("supplier_id")
+  storeId        Int     @map("store_id")
+  category       String
+  name           String  @map("product_name")
+  supplierPrice  Decimal @map("supplier_price") @db.Decimal(10, 2)
+  storePrice     Decimal @map("store_price") @db.Decimal(10, 2)
+  quantity       Int     @default(0)
+  createdAt      DateTime @default(now()) @map("created_at")
+  updatedAt      DateTime @updatedAt @map("updated_at")
+
+  // Связи
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+  store    Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+
+  @@map("products")
+}
+
+// Промежуточная таблица для связи магазинов и поставщиков (многие ко многим)
+model StoreSupplier {
+  id         Int @id @default(autoincrement())
+  storeId    Int @map("store_id")
+  supplierId Int @map("supplier_id")
+  createdAt  DateTime @default(now()) @map("created_at")
+
+  store    Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
+
+  @@unique([storeId, supplierId])
+  @@map("store_suppliers")
 }

@@ -1,229 +1,229 @@
 @charset "UTF-8";
 .footer{
-    padding: 16px 0;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    background:rgb(0,172,238);
-    width: 100%;
+  padding: 16px 0;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background:rgb(0,172,238);
+  width: 100%;
 }
 
 .contacts{
-    color: white;
-    font-weight: 900;
-    font-size: 28px;
-    text-align: center;
-    -webkit-text-stroke: 1px #000;
+  color: white;
+  font-weight: 900;
+  font-size: 28px;
+  text-align: center;
+  -webkit-text-stroke: 1px #000;
 }
 .custom-btn {
-    width: 130px;
-    height: 40px;
-    color: #fff;
-    border-radius: 5px;
-    padding: 10px 25px;
-    font-family: 'Lato', sans-serif;
-    font-weight: 500;
-    background: transparent;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    position: relative;
-    display: inline-block;
-     box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
-     7px 7px 20px 0px rgba(0,0,0,.1),
-     4px 4px 5px 0px rgba(0,0,0,.1);
-    outline: none;
+  width: 130px;
+  height: 40px;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 25px;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  display: inline-block;
+    box-shadow:inset 2px 2px 2px 0px rgba(255,255,255,.5),
+    7px 7px 20px 0px rgba(0,0,0,.1),
+    4px 4px 5px 0px rgba(0,0,0,.1);
+  outline: none;
 }
 
 .btn {
-    background: rgb(0,172,238);
-  background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
-    width: 130px;
-    height: 40px;
-    line-height: 42px;
-    padding: 0;
-    border: none;
-    
-  }
-  .btn span {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-  }
-  .btn:before,
-  .btn:after {
-    position: absolute;
-    content: "";
-    right: 0;
-    top: 0;
-     background: rgba(2,126,251,1);
-    transition: all 0.3s ease;
-  }
-  .btn:before {
-    height: 0%;
-    width: 2px;
-  }
-  .btn:after {
-    width: 0%;
-    height: 2px;
-  }
-  .btn:hover{
-     background: transparent;
-    box-shadow: none;
-  }
-  .btn:hover:before {
-    height: 100%;
-  }
-  .btn:hover:after {
-    width: 100%;
-  }
-  .btn span:hover{
-     color: rgba(2,126,251,1);
-  }
-  .btn span:before,
-  .btn span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-     background: rgba(2,126,251,1);
-    transition: all 0.3s ease;
-  }
-  .btn span:before {
-    width: 2px;
-    height: 0%;
-  }
-  .btn span:after {
-    width: 0%;
-    height: 2px;
-  }
-  .btn span:hover:before {
-    height: 100%;
-  }
-  .btn span:hover:after {
-    width: 100%;
-  }
-  @import url(https://pablogarcia.dev/public/share/reset.css);
+  background: rgb(0,172,238);
+background: linear-gradient(0deg, rgba(0,172,238,1) 0%, rgba(2,126,251,1) 100%);
+  width: 130px;
+  height: 40px;
+  line-height: 42px;
+  padding: 0;
+  border: none;
+  
+}
+.btn span {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.btn:before,
+.btn:after {
+  position: absolute;
+  content: "";
+  right: 0;
+  top: 0;
+    background: rgba(2,126,251,1);
+  transition: all 0.3s ease;
+}
+.btn:before {
+  height: 0%;
+  width: 2px;
+}
+.btn:after {
+  width: 0%;
+  height: 2px;
+}
+.btn:hover{
+    background: transparent;
+  box-shadow: none;
+}
+.btn:hover:before {
+  height: 100%;
+}
+.btn:hover:after {
+  width: 100%;
+}
+.btn span:hover{
+    color: rgba(2,126,251,1);
+}
+.btn span:before,
+.btn span:after {
+  position: absolute;
+  content: "";
+  left: 0;
+  bottom: 0;
+    background: rgba(2,126,251,1);
+  transition: all 0.3s ease;
+}
+.btn span:before {
+  width: 2px;
+  height: 0%;
+}
+.btn span:after {
+  width: 0%;
+  height: 2px;
+}
+.btn span:hover:before {
+  height: 100%;
+}
+.btn span:hover:after {
+  width: 100%;
+}
+@import url(https://pablogarcia.dev/public/share/reset.css);
 
-  /* Typography
-  ------------------------------------- */
-  @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+/* Typography
+------------------------------------- */
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400,700);
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  line-height: 1.8em;
+  color:#324a80;
+}
+
+/* Navigation */
+
+a {
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #151515;
   
-  body {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    line-height: 1.8em;
-    color:#324a80;
-  }
+  transition-delay: 0s;
+  transition-duration: 0.36s;
+  transition-property: all;
+  transition-timing-function: line;
+}
+
+nav a:hover { font-weight: 400; }
+
+nav,
+nav:hover { padding: 1em; }
+
+nav a { text-indent: -200px; }
+
+nav:hover a {
+  text-indent:0px;
+  color: #EEFFE5;
+}
+
+svg,
+a { vertical-align: top; }
+
+/* End Navigation */
+
+
+/* Sections */
+
+h1 {
+  font-family: 'Open Sans', sans-serif;
+  font-size:3em; 
+  font-weight: 300;
+  color:#000;
+  line-height:1.8em;
+}
+
+h2 { font-weight: 300; }
+
+h2 a { font-weight: 700; }
+
+/* End Sections */
+
+
+/* Structure
+------------------------------------- */
+body { background: #f1f1f1; }
+
+/* Navigation */
+
+nav {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  display: block;
+  height: auto;
+  min-width: 40px;
+  width: 40px;
+  background-color:#9eb0d2 ;
   
-  /* Navigation */
-  
-  a {
-    text-transform: uppercase;
-    text-decoration: none;
-    color: #151515;
-    
-    transition-delay: 0s;
-    transition-duration: 0.36s;
-    transition-property: all;
-    transition-timing-function: line;
-  }
-  
-  nav a:hover { font-weight: 400; }
-  
-  nav,
-  nav:hover { padding: 1em; }
-  
-  nav a { text-indent: -200px; }
-  
-  nav:hover a {
-    text-indent:0px;
-    color: #EEFFE5;
-  }
-  
-  svg,
-  a { vertical-align: top; }
-  
-  /* End Navigation */
-  
-  
-  /* Sections */
-  
-  h1 {
-    font-family: 'Open Sans', sans-serif;
-    font-size:3em; 
-    font-weight: 300;
-    color:#000;
-    line-height:1.8em;
-  }
-  
-  h2 { font-weight: 300; }
-  
-  h2 a { font-weight: 700; }
-  
-  /* End Sections */
-  
-  
-  /* Structure
-  ------------------------------------- */
-  body { background: #f1f1f1; }
-  
-  /* Navigation */
-  
-  nav {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    display: block;
-    height: auto;
-    min-width: 40px;
-    width: 40px;
-    background-color:#9eb0d2 ;
-    
-    transition-delay: 0s;
-    transition-duration: 0.4s;
-    transition-property: all;
-    transition-timing-function: line;
-  }
-  
-  nav:hover {
-    position: fixed;
-    left: 0;
-    top: 0;
-    bottom: 0;
-    height: auto;
-    width: 170px;
-    background-color: rgb(0,172,238);
-  }
-  
-  nav a {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-    filter: alpha(opacity=0);
-    opacity:0;
-    margin-left: 1em;
-  }
-  
-  nav:hover a {
-    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
-    filter: alpha(opacity=100);
-    opacity:1;
-  }
-  ul{
-    padding: 10px;
-  }
-  li {
-    display: block;
-    padding:0.2em;
-    margin:0;
-    height:50px;
-  }
-  
-  svg,
-  a { display: inline-block; }
-  
-  /* End Navigation */
-  
-  /* Sections */
-  
-  section { padding: 2em 0 0 14em; }
+  transition-delay: 0s;
+  transition-duration: 0.4s;
+  transition-property: all;
+  transition-timing-function: line;
+}
+
+nav:hover {
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  height: auto;
+  width: 170px;
+  background-color: rgb(0,172,238);
+}
+
+nav a {
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+  filter: alpha(opacity=0);
+  opacity:0;
+  margin-left: 1em;
+}
+
+nav:hover a {
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+  filter: alpha(opacity=100);
+  opacity:1;
+}
+ul{
+  padding: 10px;
+}
+li {
+  display: block;
+  padding:0.2em;
+  margin:0;
+  height:50px;
+}
+
+svg,
+a { display: inline-block; }
+
+/* End Navigation */
+
+/* Sections */
+
+section { padding: 2em 0 0 14em; }
