@@ -1,95 +1,93 @@
-datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
-}
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
   provider = "prisma-client-js"
 }
 
-model User {
-  id          Int      @id @default(autoincrement())
-  email       String   @unique
-  password    String
-  phoneNumber String   @unique @map("phone_number")
-  firstName   String   @map("first_name")
-  lastName    String   @map("last_name")
-  companyName String   @map("company_name")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+datasource db {
+  provider = "postgresql" 
+  url      = env("DATABASE_URL")
+}
 
-  // Связи
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  password     String
+  phoneNumber  String?  @unique @map("phone_number")
+  firstName    String?  @map("first_name")
+  lastName     String?  @map("last_name")
+  companyName  String?  @map("company_name")
+  createdAt    DateTime @default(now()) @map("created_at")
+  updatedAt    DateTime @updatedAt @map("updated_at")
+
+  // Relations
   suppliers Supplier[]
-  stores    Store[]
-  products  Product[]
+  shops     Shop[]
 
   @@map("users")
 }
 
 model Supplier {
-  id          Int    @id @default(autoincrement())
-  userId      Int    @map("user_id")
-  name        String @map("supplier_name")
-  description String @map("supplier_info")
-  category    String @map("product_category")
-  createdAt   DateTime @default(now()) @map("created_at")
-  updatedAt   DateTime @updatedAt @map("updated_at")
+  id              Int      @id @default(autoincrement())
+  userId          Int      @map("user_id")
+  name            String
+  description     String?
+  productCategory String?  @map("product_category")
+  createdAt       DateTime @default(now()) @map("created_at")
+  updatedAt       DateTime @updatedAt @map("updated_at")
 
-  // Связи
-  user     User      @relation(fields: [userId], references: [id], onDelete: Cascade)
-  products Product[]
-  stores   StoreSupplier[]
+  // Relations
+  user             User               @relation(fields: [userId], references: [id])
+  supplierProducts SupplierProduct[]
 
   @@map("suppliers")
 }
 
-model Store {
-  id        Int    @id @default(autoincrement())
-  userId    Int    @map("user_id")
-  name      String @map("store_name")
-  address   String?
+model SupplierProduct {
+  id            Int      @id @default(autoincrement())
+  supplierId    Int      @map("supplier_id")
+  name          String
+  category      String?
+  description   String?
+  supplierPrice String   @map("supplier_price")
+  createdAt     DateTime @default(now()) @map("created_at")
+  updatedAt     DateTime @updatedAt @map("updated_at")
+
+  // Relations
+  supplier        Supplier          @relation(fields: [supplierId], references: [id])
+  productsInShops ProductInShop[]
+
+  @@map("suppliers_products")
+}
+
+model Shop {
+  id        Int      @id @default(autoincrement())
+  userId    Int      @map("user_id")
+  name      String
+  address   String   @map("adress") // исправил опечатку, но можете оставить как "adress" если нужно
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
-  // Связи
-  user      User            @relation(fields: [userId], references: [id], onDelete: Cascade)
-  products  Product[]
-  suppliers StoreSupplier[]
+  // Relations
+  user            User            @relation(fields: [userId], references: [id])
+  productsInShops ProductInShop[]
 
-  @@map("stores")
+  @@map("shops")
 }
 
-model Product {
-  id             Int     @id @default(autoincrement())
-  userId         Int     @map("user_id")
-  supplierId     Int     @map("supplier_id")
-  storeId        Int     @map("store_id")
-  category       String
-  name           String  @map("product_name")
-  supplierPrice  Decimal @map("supplier_price") @db.Decimal(10, 2)
-  storePrice     Decimal @map("store_price") @db.Decimal(10, 2)
-  quantity       Int     @default(0)
-  createdAt      DateTime @default(now()) @map("created_at")
-  updatedAt      DateTime @updatedAt @map("updated_at")
+model ProductInShop {
+  id        Int      @id @default(autoincrement())
+  shopId    Int      @map("shop_id")
+  productId Int      @map("product_id")
+  sellPrice String   @map("sell_price")
+  quantity  Int
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 
-  // Связи
-  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
-  store    Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
+  // Relations
+  shop    Shop            @relation(fields: [shopId], references: [id])
+  product SupplierProduct @relation(fields: [productId], references: [id])
 
-  @@map("products")
-}
-
-// Промежуточная таблица для связи магазинов и поставщиков (многие ко многим)
-model StoreSupplier {
-  id         Int @id @default(autoincrement())
-  storeId    Int @map("store_id")
-  supplierId Int @map("supplier_id")
-  createdAt  DateTime @default(now()) @map("created_at")
-
-  store    Store    @relation(fields: [storeId], references: [id], onDelete: Cascade)
-  supplier Supplier @relation(fields: [supplierId], references: [id], onDelete: Cascade)
-
-  @@unique([storeId, supplierId])
-  @@map("store_suppliers")
+  @@map("products_in_shops")
 }

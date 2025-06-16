@@ -5,6 +5,7 @@ import userRouter from './routes/user'
 import bodyParser from 'body-parser';
 import express from "express"
 import path  from "path";
+import appRouter from './routes/app'
 
 
 const templatesPath = path.resolve(process.cwd(),'public','views')
@@ -18,9 +19,8 @@ async function run() {
     app.use(cookieParser());
     app.set('view engine','ejs')
     app.set('views',templatesPath)
-    app.get('/', (req, res) => {
-        res.render('index', {username : 'Пидорас'})
-    })
+    // ------------ ROUTES ------------ //
+    app.use('/', appRouter)
     app.use('/registration',registrationRouter)
     app.use('/user', userRouter)
     app.use('/login', loginRouter)
