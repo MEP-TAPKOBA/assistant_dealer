@@ -17,6 +17,5 @@ export class UserController {
         const prisma = new PrismaClient()
         const user = await prisma.user.findUnique({where:{email:req.user.email}})
         res.render('menu',{lastName:user.lastName, firstName:user.firstName})
-
     }
 }

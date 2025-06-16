@@ -1,12 +1,11 @@
+import registrationRouter from './routes/registration'
 import cookieParser from 'cookie-parser'
 import loginRouter from './routes/login'
-import registrationRouter from './routes/registration'
 import userRouter from './routes/user'
-import bodyParser from 'body-parser';
+import bodyParser from 'body-parser'
+import appRouter from './routes/app'
 import express from "express"
 import path  from "path";
-import appRouter from './routes/app'
-
 
 const templatesPath = path.resolve(process.cwd(),'public','views')
 const port = process.env.PORT || 5000;
