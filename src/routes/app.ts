@@ -1,6 +1,6 @@
 import { checkTokenMiddleware } from '../middlwares/checkTokenMiddleware'
 import { UserController } from '../controllers/UserController'
-import { AppController } from '../controllers/appController'
+import { AppController } from '../controllers/AppController'
 import { UserService } from '../services/UserService'
 import { AuthService } from '../services/AuthService'
 import { PrismaClient } from '@prisma/client'

@@ -32,8 +32,11 @@ model Supplier {
   id              Int      @id @default(autoincrement())
   userId          Int      @map("user_id")
   name            String
-  description     String?
   productCategory String?  @map("product_category")
+  description     String?
+  phoneNumber     String   @map("phone_number")
+  website         String?
+  hidden          Boolean  @default(false)
   createdAt       DateTime @default(now()) @map("created_at")
   updatedAt       DateTime @updatedAt @map("updated_at")
 
@@ -50,7 +53,7 @@ model SupplierProduct {
   name          String
   category      String?
   description   String?
-  supplierPrice String   @map("supplier_price")
+  supplierPrice Float   @map("supplier_price")
   createdAt     DateTime @default(now()) @map("created_at")
   updatedAt     DateTime @updatedAt @map("updated_at")
 
@@ -79,15 +82,15 @@ model Shop {
 model ProductInShop {
   id        Int      @id @default(autoincrement())
   shopId    Int      @map("shop_id")
-  productId Int      @map("product_id")
-  sellPrice String   @map("sell_price")
+  supplierProductId Int      @map("supplier_product_id")
+  sellPrice Float   @map("sell_price")
   quantity  Int
   createdAt DateTime @default(now()) @map("created_at")
   updatedAt DateTime @updatedAt @map("updated_at")
 
   // Relations
   shop    Shop            @relation(fields: [shopId], references: [id])
-  product SupplierProduct @relation(fields: [productId], references: [id])
+  product SupplierProduct @relation(fields: [supplierProductId], references: [id])
 
   @@map("products_in_shops")
 }
