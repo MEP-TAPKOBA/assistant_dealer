@@ -11,6 +11,8 @@ const productInShopController = new ProductInShopController(productInShopService
 //--------------------------------------------------------------------------------
 
 router.post('/add', checkTokenMiddleware, productInShopController.add.bind(productInShopController))
+router.put('/update', checkTokenMiddleware, productInShopController.update.bind(productInShopController))
+router.delete('/delete', checkTokenMiddleware,productInShopController.delete.bind(productInShopController))
 
 
 export default router

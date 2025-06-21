@@ -11,6 +11,7 @@ const supplierProductController = new SupplierProductController(supplierProductS
 //--------------------------------------------------------------------------------
 
 router.post('/create', checkTokenMiddleware, supplierProductController.create.bind(supplierProductController))
-
+router.put('/update', checkTokenMiddleware, supplierProductController.update.bind(supplierProductController))
+router.delete('/delete', checkTokenMiddleware,supplierProductController.delete.bind(supplierProductController))
 
 export default router
