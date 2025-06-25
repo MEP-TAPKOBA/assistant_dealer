@@ -11,7 +11,7 @@ const userController = new UserController(userService)
 //--------------------------------------------------------------------------------
 
 router.post('/info', checkTokenMiddleware, userController.get.bind(userController))
-router.post('/switch-password',checkTokenMiddleware,userController.switchPassword.bind(userController))
+router.post('/switch-password', checkTokenMiddleware, userController.switchPassword.bind(userController))
 
 
 export default router

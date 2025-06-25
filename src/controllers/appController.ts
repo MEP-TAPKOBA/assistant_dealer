@@ -7,10 +7,10 @@ export class AppController {
     }
     async render(req: Request, res: Response) {
         const token = req.cookies?.token
-        if (!token){
+        if (!token) {
             res.render('index')
             return
         }
         res.redirect('/menu')
     }
-    }
+}

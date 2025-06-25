@@ -16,14 +16,14 @@ export class UserService {
             return [200, 'ok']
         } catch (e) { return [500, 'iternalError'] }
     }
-    async switchPassword(req):Promise <[number,string]>{
-        const {oldPassword, newPassword} = req.body
+    async switchPassword(req): Promise<[number, string]> {
+        const { oldPassword, newPassword } = req.body
         const token = req.cookies?.token
         const decoded = jwt.verify(token, process.env.SECRET_KEY, { algorithms: ['HS256'] }) as any
-        const findUser = await this.prisma.user.findUnique({where: {email:decoded.email}})
-        if(!await verify(findUser.password,oldPassword))
-            return [401,'Пароль не подошел']
-        await this.prisma.user.update({ where: { email: decoded.email },data: { password:await hash(newPassword) } })
+        const findUser = await this.prisma.user.findUnique({ where: { email: decoded.email } })
+        if (!await verify(findUser.password, oldPassword))
+            return [401, 'Пароль не подошел']
+        await this.prisma.user.update({ where: { email: decoded.email }, data: { password: await hash(newPassword) } })
         return [200, `success \n newPassword:${newPassword}`]
     }
     async getInfo(dto): Promise<[number, object]> {

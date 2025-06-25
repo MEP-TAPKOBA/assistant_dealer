@@ -13,7 +13,7 @@ const userService = new UserService(prisma)
 const appController = new AppController(authService)
 const userController = new UserController(userService)
 //--------------------------------------------------------------------------------
-router.get('/',appController.render.bind(appController))
-router.get('/menu',checkTokenMiddleware,userController.renderMenu.bind(userController))
+router.get('/', appController.render.bind(appController))
+router.get('/menu', checkTokenMiddleware, userController.renderMenu.bind(userController))
 
 export default router

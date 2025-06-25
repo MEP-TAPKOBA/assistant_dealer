@@ -9,6 +9,6 @@ const authService = new AuthService(prisma)
 const authController = new AuthController(authService)
 //--------------------------------------------------------------------------------
 router.post('/', authController.login.bind(authController))
-router.get('/',authController.render.bind(authController))
+router.get('/', authController.render.bind(authController))
 
 export default router
