@@ -6,7 +6,7 @@ export function createShopMiddleware(req, res, next) {
     const errors = shopValidator(dto)
     if (errors) {
         const err = errors.join('\n')
-        res.status(400).json({ message: err })
+        res.render('errors',{errors: err})
         return
     }
     next()

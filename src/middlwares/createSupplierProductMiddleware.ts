@@ -6,7 +6,7 @@ export function createSupplierProductMiddleware(req, res, next) {
     const errors = supplierProductValidator(dto)
     if (errors) {
         const err = errors.join('\n')
-        res.status(400).json({ message: err })
+        res.render('errors',{errors: err})
         return
     }
     next()

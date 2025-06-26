@@ -6,7 +6,7 @@ export function checkTokenMiddleware(req, res, next) {
   const token = req.cookies?.token
 
   if (!token) {
-    return res.status(401).json({ message: 'Вам необходимо авторизироваться' });
+    return res.render('errors',{errors: 'Вам необходимо авторизироваться'})
   }
 
   try {
@@ -16,6 +16,6 @@ export function checkTokenMiddleware(req, res, next) {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ message: 'Неверный токен или срок действия истёк.' });
+    return res.render('errors',{errors: err})
   }
 };
