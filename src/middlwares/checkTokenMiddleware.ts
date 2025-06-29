@@ -16,6 +16,7 @@ export function checkTokenMiddleware(req, res, next) {
     req.user = decoded;
     next();
   } catch (err) {
-    return res.render('errors',{errors: err})
+    res.render('errors',{errors: err})
+    return
   }
 };
